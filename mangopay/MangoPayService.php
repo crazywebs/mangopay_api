@@ -1,6 +1,5 @@
 <?php
-	//http://dev1.brainpulse.org/qmhreturn/mangopay/MangoPayService.php?id=1&type=message&amount=100
-//http://dev1.brainpulse.org/qmhreturn/mangopay/MangoPayService.php?id=39&status=success&type=message&price=20.533333333333335&qmh_user_charge=1.866666666666667&qmh_agency_charge=0.9333333333333335&payment_mode=Mango%20Pay
+	
 	session_start();
 	error_reporting(E_ALL);
 	include "../webservice/mysql_connection.php";
@@ -26,8 +25,8 @@
 	$api = new MangoPay\MangoPayApi();
 
 	// configuration
-	$api->Config->ClientId = 'brainpulse';
-	$api->Config->ClientPassword = 'o1RPOg0KyE9uxnNxN2UV7EhMwDoHpbju5G2r4CPJWOMCMqEZpe';
+	$api->Config->ClientId = 'xyz';
+	$api->Config->ClientPassword = 'xyz';
 	$api->Config->TemporaryFolder = '/tmp/';
 	//echo "<pre>";print_r($api);die;
 	//  For user creation.
@@ -95,7 +94,7 @@
 	$PayIn->Fees->Amount = 150;
 	$PayIn->ExecutionType = "WEB";
 	$PayIn->ExecutionDetails = new MangoPay\PayInExecutionDetailsWeb();
-	$PayIn->ExecutionDetails->ReturnURL = "http".(isset($_SERVER['HTTPS']) ? "s" : null)."://dev1.brainpulse.org/qmhreturn/mangopay/success.php?id=".$id."&type=".$type."&price=".$price."&qmh_user_charge=".$qmh_user_charge."&qmh_agency_charge=".$qmh_agency_charge."&payment_mode=".$payment_mode;
+	$PayIn->ExecutionDetails->ReturnURL = "http".(isset($_SERVER['HTTPS']) ? "s" : null)."://xyz.com?id=".$id."&type=".$type."&price=".$price."&qmh_user_charge=".$qmh_user_charge."&qmh_agency_charge=".$qmh_agency_charge."&payment_mode=".$payment_mode;
 	$PayIn->ExecutionDetails->Culture = "EN";
 	$result = $api->PayIns->Create($PayIn);
 	$_SESSION["MangoPayDemo"]["PayInCardWeb"] = $result->Id;

@@ -4,7 +4,7 @@
 	
 	include "../webservice/mysql_connection.php";
 	require '../webservice/GCM.php';
-	define("GOOGLE_API_KEY", "AIzaSyAx8OY0E2K1vvX_H8Sa3yaewelF_aaGGxQ");
+	define("GOOGLE_API_KEY", "xyz");
 	extract($_REQUEST);
 	$main_id = $id;
 	$total_amount = $price;
@@ -12,8 +12,8 @@
 	$api = new MangoPay\MangoPayApi();
 
 	// configuration
-	$api->Config->ClientId = 'brainpulse';
-	$api->Config->ClientPassword = 'o1RPOg0KyE9uxnNxN2UV7EhMwDoHpbju5G2r4CPJWOMCMqEZpe';
+	$api->Config->ClientId = 'xyz';
+	$api->Config->ClientPassword = 'xyz';
 	$api->Config->TemporaryFolder = '/tmp/';
 	
 	$result = $api->PayIns->Get($_SESSION["MangoPayDemo"]["PayInCardWeb"]);
